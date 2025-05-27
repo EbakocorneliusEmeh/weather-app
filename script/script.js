@@ -4,6 +4,7 @@ const apikey =
 
 $(document).ready(function() {
     weatherFn('Buea');
+        
     
 });
 
@@ -35,3 +36,6 @@ function weathershowFn(data) {
     $('#weather-icon').attr('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
     $('#weather-info').fadeIn();
 }
+
+
+
