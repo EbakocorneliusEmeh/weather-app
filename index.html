@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>waetherapp</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-card">
+        <h1 class="head">Welcome to Ebako's Weather App</h1>
+
+        <div class="btn-holder">
+          <input type="text" id="city-input" placeholder="Enter city name" />
+          <button id="city-input-btn">Get Weather</button>
+        </div>
+
+        <div id="weather-info" style="display: none; transition: opacity 0.4s;">
+          <h3 id="city-name"></h3>
+          <p id="date"></p>
+          <img id="weather-icon" src="" alt="Weather Icon" />
+          <p id="temperature"></p>
+          <p id="description"></p>
+          <p id="wind-speed"></p>
+        </div>
+      </div>
+    </div>
+
     <script src="script/script.js"></script>
-</body>
+  </body>
 </html>
