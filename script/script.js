@@ -17,9 +17,11 @@ async function weatherFn(cName) {
   const tempUrl = `${url}?q=${encodeURIComponent(
     cName
   )}&appid=${apikey}&units=metric`;
+
   try {
     const res = await fetch(tempUrl);
     const data = await res.json();
+
     if (res.ok) {
       weathershowFn(data);
     } else {
@@ -32,9 +34,6 @@ async function weatherFn(cName) {
 
 function weathershowFn(data) {
   document.getElementById("city-name").textContent = data.name;
-  document.getElementById("date").textContent = moment().format(
-    "MMM Do YYYY, h:mm:ss a"
-  );
   document.getElementById("temperature").innerHTML = `${data.main.temp}°C`;
   document.getElementById("description").textContent =
     data.weather[0].description;
@@ -43,11 +42,18 @@ function weathershowFn(data) {
   ).innerHTML = `Wind Speed: ${data.wind.speed} m/s`;
   document.getElementById(
     "weather-icon"
-  ).src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+  ).src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
   const weatherInfo = document.getElementById("weather-info");
   weatherInfo.style.display = "block";
-  weatherInfo.style.opacity = 0;
-  setTimeout(() => (weatherInfo.style.opacity = 1), 50);
+  weatherInfo.style.opacity = "0";
+
+  setTimeout(() => {
+    weatherInfo.style.opacity = "1";
+  }, 50);
+
+  updateDate();
+  clearInterval(window.dateInterval);
+  window.dateInterval = setInterval(updateDate, 1000);
 }
 
